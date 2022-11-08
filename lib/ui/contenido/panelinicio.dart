@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/solicitudes.dart';
 
 class PanelInicio extends StatefulWidget {
   const PanelInicio({super.key});
@@ -16,33 +19,42 @@ class _PanelInicioState extends State<PanelInicio> {
       ),
       body: Drawer(
         child: ListView(children: <Widget>[
-          const UserAccountsDrawerHeader(
-            accountName: Text("CODEA APP"),
-            accountEmail: Text("informes@gmail.com"),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image:
-                        NetworkImage("https://dominio.com/imagen/recurso.jpg"),
-                    fit: BoxFit.cover)),
-          ),
           Ink(
             color: Colors.indigo,
-            child: const ListTile(
-              title: Text(
-                "MENU 1",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
           ),
-          const ListTile(
-            title: Text("Libros"),
-          ),
-          const ListTile(
-            title: Text(""),
-          ),
-          const ListTile(
-            title: Text(""),
-          )
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegistrarLibro(),
+                    ));
+              },
+              child: const ListTile(
+                title: Text('Registrar Libros'),
+              )),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ConsultarLibros(),
+                    ));
+              },
+              child: const ListTile(
+                title: Text('Consultar Libros'),
+              )),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Solicitudes(),
+                    ));
+              },
+              child: const ListTile(
+                title: Text('Gestionar solicitudes'),
+              )),
         ]),
       ),
     );

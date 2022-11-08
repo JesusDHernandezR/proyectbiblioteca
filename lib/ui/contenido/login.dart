@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicio.dart';
+import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class Login extends StatefulWidget {
@@ -19,27 +20,27 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title: const Text('Ingresar'),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/2204_w037_n003_306b_p1_306.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: [
-            Textos(controlartextos: controlNombre, etiqueta: 'Usuario'),
-            Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PanelInicio()));
-                },
-                child: const Text('Ingresar')),
-          ],
-        ),
+      body: Column(
+        children: [
+          Textos(controlartextos: controlNombre, etiqueta: 'Usuario'),
+          Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PanelInicio()));
+              },
+              child: const Text('Ingresar Admin')),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PanelInicioEstudiante()));
+              },
+              child: const Text('Ingresar Estudiante')),
+        ],
       ),
     );
   }
