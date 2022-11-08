@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
+import 'package:proyectbiblioteca/ui/contenido/registrarUsuario.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class Login extends StatefulWidget {
@@ -32,6 +33,9 @@ class _LoginState extends State<Login> {
                         builder: (context) => const PanelInicio()));
               },
               child: const Text('Ingresar Admin')),
+          const SizedBox(
+            height: 10,
+          ),
           ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -40,6 +44,17 @@ class _LoginState extends State<Login> {
                         builder: (context) => const PanelInicioEstudiante()));
               },
               child: const Text('Ingresar Estudiante')),
+          const SizedBox(
+            height: 20,
+          ),
+          FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegistrarUsuario()));
+              },
+              child: const Text('Registrarme')),
         ],
       ),
     );
