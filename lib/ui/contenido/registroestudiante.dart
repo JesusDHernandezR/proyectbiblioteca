@@ -14,7 +14,7 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
   TextEditingController controlnombre = TextEditingController();
   TextEditingController controlapellido = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
-  TextEditingController controlpassword = TextEditingController();
+  TextEditingController controlcontrasena = TextEditingController();
 
   @override
   void initState() {
@@ -38,13 +38,13 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
           Textos(
             controlartextos: controlapellido,
             etiqueta: 'Apellidos',
-          ),          
+          ),
           Textos(
             controlartextos: controlcorreo,
             etiqueta: 'Correo',
           ),
           Textos(
-            controlartextos: controlpassword,
+            controlartextos: controlcontrasena,
             etiqueta: 'Contraseña',
           ),
           ElevatedButton(
@@ -53,12 +53,12 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
               if (controlnombre.text.isNotEmpty &&
                   controlapellido.text.isNotEmpty &&
                   controlcorreo.text.isNotEmpty &&
-                  controlpassword.text.isNotEmpty) {
+                  controlcontrasena.text.isNotEmpty) {
                 _clienteAdd.add(Estudiante(
                     nombre: controlnombre.text,
                     apellido: controlapellido.text,
                     correo: controlcorreo.text,
-                    contrasena: controlpassword.text));
+                    contrasena: controlcontrasena.text));
 
                 // Devuelvo los datos
 

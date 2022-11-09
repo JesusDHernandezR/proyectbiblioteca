@@ -4,3 +4,4 @@ class Secretaria {
   var correo;
   var contrasena;
 }
+

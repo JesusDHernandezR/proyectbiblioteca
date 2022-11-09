@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
+import 'package:proyectbiblioteca/ui/contenido/registroadmin.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class Login extends StatefulWidget {
@@ -36,6 +37,14 @@ class _LoginState extends State<Login> {
           const SizedBox(
             height: 20,
           ),
+          FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegistrarAdmin()));
+              },
+              child: const Text('Registrarme')),
         ],
       ),
     );

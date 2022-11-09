@@ -14,6 +14,7 @@ class _ConsultarLibrosState extends State<ConsultarLibros> {
       appBar: AppBar(
         title: const Text('Consultas'),
       ),
+      body: Column(),
     );
   }
 }

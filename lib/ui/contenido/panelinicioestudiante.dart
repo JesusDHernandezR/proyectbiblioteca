@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/ui/contenido/deseo.dart';
 
 class PanelInicioEstudiante extends StatefulWidget {
   const PanelInicioEstudiante({super.key});
@@ -29,9 +30,17 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
               child: const ListTile(
                 title: Text('Consultar prestamos'),
               )),
-          const ListTile(
-            title: Text(""),
-          )
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Deseo(),
+                    ));
+              },
+              child: const ListTile(
+                title: Text('Deseo'),
+              )),
         ]),
       ),
     );
