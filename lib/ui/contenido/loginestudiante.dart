@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
+import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
+import 'package:proyectbiblioteca/ui/contenido/registroestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginEstudiante extends StatefulWidget {
+  const LoginEstudiante({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginEstudiante> createState() => _LoginEstudianteState();
 }
 
-class _LoginState extends State<Login> {
-  TextEditingController controlCodigo = TextEditingController();
+class _LoginEstudianteState extends State<LoginEstudiante> {
   TextEditingController controlCorreo = TextEditingController();
   TextEditingController controlContrasena = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +21,6 @@ class _LoginState extends State<Login> {
       ),
       body: Column(
         children: [
-          Textos(controlartextos: controlCodigo, etiqueta: 'Codigo'),
           Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
           Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
           ElevatedButton(
@@ -30,12 +28,20 @@ class _LoginState extends State<Login> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const PanelInicio()));
+                        builder: (context) => const PanelInicioEstudiante()));
               },
               child: const Text('Ingresar')),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
+          FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegistroEstudiante()));
+              },
+              child: const Text('Registrarme')),
         ],
       ),
     );

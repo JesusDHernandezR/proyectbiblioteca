@@ -1,13 +1,11 @@
-class Usuario {
+class Estudiante {
   var nombre;
   var apellido;
-  var tipoDeUsuario;
   var correo;
   var contrasena;
-  Usuario(
+  Estudiante(
       {this.nombre,
       this.apellido,
-      this.tipoDeUsuario,
       this.correo,
       this.contrasena});
 }

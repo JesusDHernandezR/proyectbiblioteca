@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/ui/contenido/inicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/login.dart';
 
 class App extends StatelessWidget {
@@ -9,7 +10,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Login',
       theme: ThemeData(),
-      home: const Login(),
+      home: const Inicio(),
     );
   }
 }

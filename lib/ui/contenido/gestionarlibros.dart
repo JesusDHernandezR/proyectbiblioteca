@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
-import 'package:proyectbiblioteca/ui/contenido/solicitudes.dart';
 
-class PanelInicio extends StatefulWidget {
-  const PanelInicio({super.key});
+import 'consultarlibro.dart';
+
+class GestionarLibros extends StatefulWidget {
+  const GestionarLibros({super.key});
 
   @override
-  State<PanelInicio> createState() => _PanelInicioState();
+  State<GestionarLibros> createState() => _GestionarLibrosState();
 }
 
-class _PanelInicioState extends State<PanelInicio> {
+class _GestionarLibrosState extends State<GestionarLibros> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inicio'),
+        title: const Text('Administración de libros'),
       ),
       body: Drawer(
         child: ListView(children: <Widget>[
@@ -43,17 +43,6 @@ class _PanelInicioState extends State<PanelInicio> {
               },
               child: const ListTile(
                 title: Text('Consultar Libros'),
-              )),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Solicitudes(),
-                    ));
-              },
-              child: const ListTile(
-                title: Text('Gestionar solicitudes'),
               )),
         ]),
       ),

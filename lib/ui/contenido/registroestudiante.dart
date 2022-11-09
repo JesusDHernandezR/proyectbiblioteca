@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/domain/modelos/usuario.dart';
+import 'package:proyectbiblioteca/domain/modelos/estudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
-class RegistrarUsuario extends StatefulWidget {
-  const RegistrarUsuario({super.key});
+class RegistroEstudiante extends StatefulWidget {
+  const RegistroEstudiante({super.key});
 
   @override
-  State<RegistrarUsuario> createState() => _AdicionarUsuarioState();
+  State<RegistroEstudiante> createState() => _AdicionarEstudianteState();
 }
 
-class _AdicionarUsuarioState extends State<RegistrarUsuario> {
-  List<Usuario> _clienteAdd = [];
+class _AdicionarEstudianteState extends State<RegistroEstudiante> {
+  List<Estudiante> _clienteAdd = [];
   TextEditingController controlnombre = TextEditingController();
   TextEditingController controlapellido = TextEditingController();
-  TextEditingController controltipodeusuario = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
   TextEditingController controlpassword = TextEditingController();
 
@@ -21,7 +20,6 @@ class _AdicionarUsuarioState extends State<RegistrarUsuario> {
   void initState() {
     // controlnombre.text = widget.gestioncliente.nombre;
     // controlapellido.text = widget.gestioncliente.apellido;
-    // controltipodeusuario.text = widget.gestioncliente.controltipodeusuario;
     // controlcorreo.text = widget.gestioncliente.correo;
     // controlpassword.text = widget.gestioncliente.contrasena;
     super.initState();
@@ -40,11 +38,7 @@ class _AdicionarUsuarioState extends State<RegistrarUsuario> {
           Textos(
             controlartextos: controlapellido,
             etiqueta: 'Apellidos',
-          ),
-          Textos(
-            controlartextos: controltipodeusuario,
-            etiqueta: 'Tipo de usuario',
-          ),
+          ),          
           Textos(
             controlartextos: controlcorreo,
             etiqueta: 'Correo',
@@ -58,13 +52,11 @@ class _AdicionarUsuarioState extends State<RegistrarUsuario> {
             onPressed: () {
               if (controlnombre.text.isNotEmpty &&
                   controlapellido.text.isNotEmpty &&
-                  controltipodeusuario.text.isNotEmpty &&
                   controlcorreo.text.isNotEmpty &&
                   controlpassword.text.isNotEmpty) {
-                _clienteAdd.add(Usuario(
+                _clienteAdd.add(Estudiante(
                     nombre: controlnombre.text,
                     apellido: controlapellido.text,
-                    tipoDeUsuario: controltipodeusuario.text,
                     correo: controlcorreo.text,
                     contrasena: controlpassword.text));
 
