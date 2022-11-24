@@ -21,9 +21,20 @@ class _RegistrarLibroState extends State<RegistrarLibro> {
       ),
       body: Column(
         children: [
-          Textos(
-            controlartextos: controlisbn,
-            etiqueta: 'Isbn',
+          const SizedBox(
+            width: 10,
+          ),
+          TextFormField(
+            maxLength: 2,
+            initialValue: 'Input text',
+            decoration: const InputDecoration(
+              labelText: 'Isbn',
+              // errorText: 'Error message',
+              // border: OutlineInputBorder(),
+              suffixIcon: Icon(
+                Icons.numbers,
+              ),
+            ),
           ),
           Textos(
             controlartextos: controlnombre,

@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
-import 'package:proyectbiblioteca/ui/contenido/registroadmin.dart';
+import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
+import 'package:proyectbiblioteca/ui/contenido/registroestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginF extends StatefulWidget {
+  const LoginF({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginF> createState() => _LoginFState();
 }
 
-class _LoginState extends State<Login> {
-  TextEditingController controlCodigo = TextEditingController();
+class _LoginFState extends State<LoginF> {
   TextEditingController controlCorreo = TextEditingController();
   TextEditingController controlContrasena = TextEditingController();
-
+  //controlador
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Administrador',
+      title: 'Estudiante',
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: Container(
         decoration: const BoxDecoration(
@@ -39,33 +38,32 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     color: Colors.white,
                     backgroundColor: Colors.transparent,
-                    height: 7,
+                    height: 10,
                     fontSize: 30,
                   )),
-              Textos(controlartextos: controlCodigo, etiqueta: 'Codigo'),
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
-              Textos(
-                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),
+              Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
               ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PanelInicio()));
+                            builder: (context) =>
+                                const PanelInicioEstudiante()));
                   },
                   child: const Text('Acceder')),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               FlatButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RegistrarAdmin()));
+                            builder: (context) => const RegistroEstudiante()));
                   },
                   textColor: Colors.white,
-                  child: const Text('Registrarme')),
+                  child: const Text('Registrarse')),
             ],
           ),
         ),
