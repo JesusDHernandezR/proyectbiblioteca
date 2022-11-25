@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
-import 'package:proyectbiblioteca/ui/contenido/registroestudiante.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
+import 'package:proyectbiblioteca/domain/modelos/estudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class LoginF extends StatefulWidget {
@@ -11,62 +13,77 @@ class LoginF extends StatefulWidget {
 }
 
 class _LoginFState extends State<LoginF> {
-  TextEditingController controlCorreo = TextEditingController();
-  TextEditingController controlContrasena = TextEditingController();
-  //controlador
+  List<Estudiante> _clienteAdd = [];
+  TextEditingController controlnombre = TextEditingController();
+  TextEditingController controlapellido = TextEditingController();
+  TextEditingController controlcorreo = TextEditingController();
+  TextEditingController controlcontrasena = TextEditingController();
+  ControlAuthFirebase controlUsuario = Get.find();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Estudiante',
-      theme: ThemeData(primarySwatch: Colors.lightBlue),
-      home: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: NetworkImage(
-              'https://c7.alamy.com/compes/2e5eg9y/diseno-de-estanterias-de-colores-para-libreria-ereader-biblioteca-simbolo-de-la-aplicacion-o-casa-decoracion-cartel-imprimir-abstracto-vector-ilustracion-2e5eg9y.jpg'),
-          fit: BoxFit.cover,
-        )),
-        child: Card(
-          clipBehavior: Clip.antiAlias,
-          color: const Color.fromARGB(221, 68, 62, 62),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 65,
-              ),
-              const Text('INICIO DE SESION',
-                  style: TextStyle(
-                    color: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    height: 10,
-                    fontSize: 30,
-                  )),
-              Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
-              Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const PanelInicioEstudiante()));
-                  },
-                  child: const Text('Acceder')),
-              const SizedBox(
-                height: 10,
-              ),
-              FlatButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegistroEstudiante()));
-                  },
-                  textColor: Colors.white,
-                  child: const Text('Registrarse')),
-            ],
+    return Scaffold(
+      appBar: AppBar(title: const Text('Registrar')),
+      body: Column(
+        children: [
+          Textos(
+            controlartextos: controlnombre,
+            etiqueta: 'Nombres',
           ),
-        ),
+          Textos(
+            controlartextos: controlapellido,
+            etiqueta: 'Apellidos',
+          ),
+          Textos(
+            controlartextos: controlcorreo,
+            etiqueta: 'Correo',
+          ),
+          Textos(
+            controlartextos: controlcontrasena,
+            etiqueta: 'Contraseña',
+          ),
+          IconButton(
+            onPressed: () {
+              controlUsuario.update();
+              controlUsuario
+                  .registrarEmail(controlcorreo.text, controlcontrasena.text)
+                  .then((value) {
+                if (controlUsuario.emailf != 'Sin registro') {
+                  Get.offAllNamed('/Inicio');
+                } else {
+                  Get.showSnackbar(const GetSnackBar(
+                    title: 'Validacion de usuario',
+                    message: 'Datos incorrectos',
+                    icon: Icon(Icons.warning),
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.red,
+                  ));
+                }
+              });
+            },
+            icon: const Icon(Icons.save),
+          ),
+          // ElevatedButton(
+          //   //Boton de Enviar Datos
+          //   onPressed: () {
+          //     if (controlnombre.text.isNotEmpty &&
+          //         controlapellido.text.isNotEmpty &&
+          //         controlcorreo.text.isNotEmpty &&
+          //         controlcontrasena.text.isNotEmpty) {
+          //       _clienteAdd.add(Estudiante(
+          //           nombre: controlnombre.text,
+          //           apellido: controlapellido.text,
+          //           correo: controlcorreo.text,
+          //           contrasena: controlcontrasena.text));
+
+          //       // Devuelvo los datos
+
+          //       Navigator.pop(context, _clienteAdd);
+          //     }
+          //   },
+          //   child: const Text('Guardar Datos'),
+          // ),
+        ],
       ),
     );
   }
