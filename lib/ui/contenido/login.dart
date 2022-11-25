@@ -57,14 +57,13 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 20,
               ),
-              FlatButton(
+              ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const RegistrarAdmin()));
                   },
-                  textColor: Colors.white,
                   child: const Text('Registrarme')),
             ],
           ),

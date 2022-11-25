@@ -54,14 +54,13 @@ class _LoginEstudianteState extends State<LoginEstudiante> {
               const SizedBox(
                 height: 10,
               ),
-              FlatButton(
+              ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const RegistroEstudiante()));
                   },
-                  textColor: Colors.white,
                   child: const Text('Registrarse')),
             ],
           ),
