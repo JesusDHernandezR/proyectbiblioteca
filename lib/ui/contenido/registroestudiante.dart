@@ -11,6 +11,7 @@ class RegistroEstudiante extends StatefulWidget {
 
 class _AdicionarEstudianteState extends State<RegistroEstudiante> {
   List<Estudiante> _clienteAdd = [];
+  TextEditingController controlidentificacion = TextEditingController();
   TextEditingController controlnombre = TextEditingController();
   TextEditingController controlapellido = TextEditingController();
   TextEditingController controlcorreo = TextEditingController();
@@ -31,6 +32,10 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
       appBar: AppBar(title: const Text('Registrar')),
       body: Column(
         children: [
+          Textos(
+            controlartextos: controlidentificacion,
+            etiqueta: 'Identificacion',
+          ),
           Textos(
             controlartextos: controlnombre,
             etiqueta: 'Nombres',
@@ -55,6 +60,7 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
                   controlcorreo.text.isNotEmpty &&
                   controlcontrasena.text.isNotEmpty) {
                 _clienteAdd.add(Estudiante(
+                    identificacion: controlidentificacion.text,
                     nombre: controlnombre.text,
                     apellido: controlapellido.text,
                     correo: controlcorreo.text,

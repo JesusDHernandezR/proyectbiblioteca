@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
 import 'package:proyectbiblioteca/domain/modelos/estudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
@@ -57,6 +56,7 @@ class _LoginFState extends State<LoginF> {
                     icon: Icon(Icons.warning),
                     duration: Duration(seconds: 5),
                     backgroundColor: Colors.red,
+                    //123_P@jj.Jose
                   ));
                 }
               });

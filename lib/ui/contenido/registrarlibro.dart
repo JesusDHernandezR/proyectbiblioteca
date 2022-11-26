@@ -15,26 +15,15 @@ class _RegistrarLibroState extends State<RegistrarLibro> {
   TextEditingController controleditorial = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registrar'),
-      ),
-      body: Column(
+    return Center(
+      child: Column(
         children: [
           const SizedBox(
             width: 10,
           ),
-          TextFormField(
-            maxLength: 2,
-            initialValue: 'Input text',
-            decoration: const InputDecoration(
-              labelText: 'Isbn',
-              // errorText: 'Error message',
-              // border: OutlineInputBorder(),
-              suffixIcon: Icon(
-                Icons.numbers,
-              ),
-            ),
+          Textos(
+            controlartextos: controlnombre,
+            etiqueta: 'Isbn',
           ),
           Textos(
             controlartextos: controlnombre,

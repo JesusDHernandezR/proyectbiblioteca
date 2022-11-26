@@ -15,7 +15,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Login',
+      title: 'Inicio',
       debugShowCheckedModeBanner: false,
       routes: {
         '/Inicio': (context) => const Inicio(),

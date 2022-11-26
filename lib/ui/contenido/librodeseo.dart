@@ -10,13 +10,6 @@ class Deseo extends StatefulWidget {
 class _DeseoState extends State<Deseo> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lista de libros deseados'),
-      ),
-      body: Column(
-        children: [],
-      ),
-    );
+    return const Center(child: Text('Deseados'));
   }
 }

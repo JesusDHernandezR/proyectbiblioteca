@@ -24,4 +24,20 @@ class ControlAuthFirebase extends GetxController {
       }
     }
   }
+
+  Future<void> ingresarCorreo(String u, String p) async {
+    try {
+      UserCredential usuario =
+          await authf.signInWithEmailAndPassword(email: u, password: p);
+
+      _uid.value = usuario.user!.uid;
+      _usuarior.value = usuario.user!.email;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return Future.error('Usuario no Existe');
+      } else if (e.code == 'wrong-password') {
+        return Future.error('Contraseña Incorrecta');
+      }
+    }
+  }
 }

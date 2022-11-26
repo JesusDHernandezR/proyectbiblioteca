@@ -13,39 +13,8 @@ class GestionarLibros extends StatefulWidget {
 class _GestionarLibrosState extends State<GestionarLibros> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Administración de libros'),
-      ),
-      body: Drawer(
-        child: ListView(children: <Widget>[
-          Ink(
-            color: Colors.indigo,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegistrarLibro(),
-                    ));
-              },
-              child: const ListTile(
-                title: Text('Registrar Libros'),
-              )),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ConsultarLibros(),
-                    ));
-              },
-              child: const ListTile(
-                title: Text('Consultar Libros'),
-              )),
-        ]),
-      ),
+    return const Center(
+      child: Text('Gestionar libros'),
     );
   }
 }

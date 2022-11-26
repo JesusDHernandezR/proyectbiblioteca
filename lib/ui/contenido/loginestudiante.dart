@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/panelinicioestudiante.dart';
-import 'package:proyectbiblioteca/ui/contenido/registroestudiante.dart';
+import 'package:get/get.dart';
+import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
+import 'package:proyectbiblioteca/ui/auth/loginf.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class LoginEstudiante extends StatefulWidget {
@@ -13,6 +14,7 @@ class LoginEstudiante extends StatefulWidget {
 class _LoginEstudianteState extends State<LoginEstudiante> {
   TextEditingController controlCorreo = TextEditingController();
   TextEditingController controlContrasena = TextEditingController();
+  ControlAuthFirebase controlE = Get.find();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,16 +43,50 @@ class _LoginEstudianteState extends State<LoginEstudiante> {
                     fontSize: 30,
                   )),
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
-              Textos(controlartextos: controlContrasena, etiqueta: 'Contraseña'),
-              ElevatedButton(
+              Textos(
+                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),
+
+              IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const PanelInicioEstudiante()));
+                    controlE.update();
+                    controlE
+                        .ingresarCorreo(
+                            controlCorreo.text, controlContrasena.text)
+                        .then((value) {
+                      if (controlCorreo.text == '' &&
+                          controlContrasena.text == '' &&
+                          controlE.emailf != controlCorreo.text &&
+                          controlE.uid != controlContrasena.text) {
+                        showDialog(
+                            context: context,
+                            builder: (context) => const LoginEstudiante());
+                      } else {
+                        if (controlE.emailf != 'Sin Registro' &&
+                            controlE.uid != '') {
+                          Get.offAllNamed('/panelEstudiante');
+                        } else {
+                          Get.showSnackbar(const GetSnackBar(
+                            title: 'Validacion de Usuarios',
+                            message: 'Error desde logica',
+                            icon: Icon(Icons.warning),
+                            duration: Duration(seconds: 5),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      }
+                    });
                   },
-                  child: const Text('Acceder')),
+                  icon: const Icon(Icons.login)),
+              // ElevatedButton(
+              //     onPressed: () {
+
+              //       // Navigator.push(
+              //       //     context,
+              //       //     MaterialPageRoute(
+              //       //         builder: (context) =>
+              //       //             const PanelInicioEstudiante()));
+              //     },
+              //     child: const Text('Acceder')),
               const SizedBox(
                 height: 10,
               ),
@@ -59,7 +95,7 @@ class _LoginEstudianteState extends State<LoginEstudiante> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RegistroEstudiante()));
+                            builder: (context) => const LoginF()));
                   },
                   child: const Text('Registrarse')),
             ],
