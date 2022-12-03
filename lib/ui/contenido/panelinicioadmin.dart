@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/domain/modelos/libro.dart';
+import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/gestionaradministrador.dart';
-import 'package:proyectbiblioteca/ui/contenido/gestionarlibros.dart';
 import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
 import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
 import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
@@ -14,6 +15,8 @@ class PanelInicio extends StatefulWidget {
 
 class _PanelInicioState extends State<PanelInicio>
     with SingleTickerProviderStateMixin {
+  final List<Libro>? libros = listLibros;
+  Libro? libro;
   int seleccionarPagina = 0;
   TabController? _controller;
 
@@ -35,7 +38,7 @@ class _PanelInicioState extends State<PanelInicio>
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inicio'),
-        backgroundColor: Color.fromARGB(255, 213, 172, 111),
+        backgroundColor: const Color.fromARGB(255, 213, 172, 111),
       ),
       body: Column(
         children: [
@@ -60,7 +63,7 @@ class _PanelInicioState extends State<PanelInicio>
                       child: Text('Lista deseo'),
                     ),
                     Tab(
-                      child: Text('Gestionar libros'),
+                      child: Text('Libros'),
                     ),
                     Tab(
                       child: Text('Libros prestados'),
@@ -74,12 +77,14 @@ class _PanelInicioState extends State<PanelInicio>
           Expanded(
               child: TabBarView(
             controller: _controller,
-            children: const [
-              RegistrarLibro(),
-              Deseo(),
-              GestionarLibros(),
-              LibrosPrestados(),
-              GestionarAdministrador()
+            children: [
+              RegistrarLibro(
+                gestionLibro: Libro(),
+              ),
+              const Deseo(),
+              const ConsultarLibros(),
+              const LibrosPrestados(),
+              const GestionarAdministrador()
             ],
           ))
         ],

@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/domain/modelos/libro.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class RegistrarLibro extends StatefulWidget {
-  const RegistrarLibro({super.key});
+  final Libro gestionLibro;
+  const RegistrarLibro({Key? key, required this.gestionLibro})
+      : super(key: key);
 
   @override
   State<RegistrarLibro> createState() => _RegistrarLibroState();
 }
 
 class _RegistrarLibroState extends State<RegistrarLibro> {
+  final List<Libro> _addLibro = [];
   TextEditingController controlisbn = TextEditingController();
   TextEditingController controlnombre = TextEditingController();
   TextEditingController controltitulo = TextEditingController();
   TextEditingController controleditorial = TextEditingController();
+
+  @override
+  void initState() {
+    controlnombre.text = widget.gestionLibro.nombre;
+    controlisbn.text = widget.gestionLibro.isbn;
+    controltitulo.text = widget.gestionLibro.titulo;
+    controleditorial.text = widget.gestionLibro.editorial;
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -37,7 +52,48 @@ class _RegistrarLibroState extends State<RegistrarLibro> {
             controlartextos: controleditorial,
             etiqueta: 'Editorial',
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Guardar')),
+          ElevatedButton(
+              onPressed: () {
+                _addLibro.add(Libro(
+                  isbn: controlisbn.text,
+                  nombre: controlnombre.text,
+                  titulo: controltitulo.text,
+                  editorial: controleditorial.text,
+                ));
+                Navigator.pop(context, _addLibro);
+                if (_addLibro.isEmpty) {
+                  AlertDialog(
+                    title: const Text('Informacion'),
+                    content: const Text('Datos vacios, no guardado'),
+                    actions: <Widget>[
+                      RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Ok',
+                            style: TextStyle(color: Colors.white),
+                          ))
+                    ],
+                  );
+                } else {
+                  AlertDialog(
+                    title: const Text('Informacion'),
+                    content: const Text('Datos guardados'),
+                    actions: <Widget>[
+                      RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Ok',
+                            style: TextStyle(color: Colors.white),
+                          ))
+                    ],
+                  );
+                }
+              },
+              child: const Text('Guardar')),
         ],
       ),
     );

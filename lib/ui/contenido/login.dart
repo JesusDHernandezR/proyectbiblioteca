@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
-import 'package:proyectbiblioteca/ui/contenido/registroadmin.dart';
+import 'package:get/get.dart';
+import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
+import 'package:proyectbiblioteca/ui/auth/registrosecretariaf.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class Login extends StatefulWidget {
@@ -11,10 +12,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController controlCodigo = TextEditingController();
   TextEditingController controlCorreo = TextEditingController();
   TextEditingController controlContrasena = TextEditingController();
-
+  ControlAuthFirebase controlAdmin = Get.find();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,18 +42,48 @@ class _LoginState extends State<Login> {
                     height: 7,
                     fontSize: 30,
                   )),
-              Textos(controlartextos: controlCodigo, etiqueta: 'Codigo'),
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
               Textos(
                   controlartextos: controlContrasena, etiqueta: 'Contraseña'),
-              ElevatedButton(
+              IconButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PanelInicio()));
+                    controlAdmin.update();
+                    controlAdmin
+                        .ingresarCorreo(
+                            controlCorreo.text, controlContrasena.text)
+                        .then((value) {
+                      if (controlCorreo.text == '' &&
+                          controlContrasena.text == '' &&
+                          controlAdmin.emailf != controlCorreo.text &&
+                          controlAdmin.uid != controlContrasena.text) {
+                        showDialog(
+                            context: context,
+                            builder: (context) => const Login());
+                      } else {
+                        if (controlAdmin.emailf != 'Sin Registro' &&
+                            controlAdmin.uid != '') {
+                          Get.offAllNamed('/panelAdministrador');
+                        } else {
+                          Get.showSnackbar(const GetSnackBar(
+                            title: 'Validacion de Usuarios',
+                            message: 'Error desde logica',
+                            icon: Icon(Icons.warning),
+                            duration: Duration(seconds: 5),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      }
+                    });
                   },
-                  child: const Text('Acceder')),
+                  icon: const Icon(Icons.login)),
+              // ElevatedButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => const PanelInicio()));
+              //     },
+              //     child: const Text('Acceder')),
               const SizedBox(
                 height: 20,
               ),
@@ -62,7 +92,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RegistrarAdmin()));
+                            builder: (context) => const RegistroSecretariaf()));
                   },
                   child: const Text('Registrarme')),
             ],

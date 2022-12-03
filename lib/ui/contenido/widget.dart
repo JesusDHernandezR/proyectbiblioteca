@@ -11,12 +11,12 @@ class Textos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
-      child: TextField(
+      child: TextField(                
         controller: controlartextos,
         decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,
-            labelText: etiqueta,
+            labelText: etiqueta,             
             // suffix: Icon(Icons.access_alarm),
             suffix: GestureDetector(
               child: const Icon(Icons.close),

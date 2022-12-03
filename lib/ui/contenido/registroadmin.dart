@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectbiblioteca/domain/modelos/secretaria.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
 class RegistrarAdmin extends StatefulWidget {
@@ -9,12 +10,18 @@ class RegistrarAdmin extends StatefulWidget {
 }
 
 class _RegistrarAdminState extends State<RegistrarAdmin> {
+  List<Secretaria> _clienteAdd = [];
+  TextEditingController controlcodigo = TextEditingController();
+  TextEditingController controlnombre = TextEditingController();
+  TextEditingController controlcorreo = TextEditingController();
+  TextEditingController controlcontrasena = TextEditingController();
+
   @override
+  void initState() {
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
-    TextEditingController controlcodigo = TextEditingController();
-    TextEditingController controlnombre = TextEditingController();
-    TextEditingController controlcorreo = TextEditingController();
-    TextEditingController controlcontrasena = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Registro'),
@@ -37,7 +44,24 @@ class _RegistrarAdminState extends State<RegistrarAdmin> {
             controlartextos: controlcontrasena,
             etiqueta: 'Contraseña',
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Guardar')),
+          ElevatedButton(
+              onPressed: () {
+                if (controlcodigo.text.isNotEmpty &&
+                    controlnombre.text.isNotEmpty &&
+                    controlcorreo.text.isNotEmpty &&
+                    controlcontrasena.text.isNotEmpty) {
+                  _clienteAdd.add(Secretaria(
+                      codigo: controlcodigo.text,
+                      nombre: controlnombre.text,
+                      correo: controlcorreo.text,
+                      contrasena: controlcontrasena.text));
+
+                  // Devuelvo los datos
+
+                  Navigator.pop(context, _clienteAdd);
+                }
+              },
+              child: const Text('Guardar')),
         ],
       ),
     );

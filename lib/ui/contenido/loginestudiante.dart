@@ -44,7 +44,7 @@ class _LoginEstudianteState extends State<LoginEstudiante> {
                   )),
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
               Textos(
-                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),
+                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),                  
 
               IconButton(
                   onPressed: () {

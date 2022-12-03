@@ -39,7 +39,7 @@ class _LoginFState extends State<LoginF> {
           ),
           Textos(
             controlartextos: controlcontrasena,
-            etiqueta: 'Contraseña',
+            etiqueta: 'Contraseña',            
           ),
           IconButton(
             onPressed: () {
@@ -49,7 +49,8 @@ class _LoginFState extends State<LoginF> {
                   .then((value) {
                 if (controlUsuario.emailf != 'Sin registro') {
                   Get.offAllNamed('/Inicio');
-                } else {
+                } else if (controlUsuario.emailf.isEmpty ||
+                    controlUsuario.uid.isEmpty) {
                   Get.showSnackbar(const GetSnackBar(
                     title: 'Validacion de usuario',
                     message: 'Datos incorrectos',
@@ -61,7 +62,7 @@ class _LoginFState extends State<LoginF> {
                 }
               });
             },
-            icon: const Icon(Icons.save),
+            icon: const Icon(Icons.save, size: 40),
           ),
           // ElevatedButton(
           //   //Boton de Enviar Datos
