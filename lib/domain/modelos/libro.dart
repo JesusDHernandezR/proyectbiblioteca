@@ -1,25 +1,33 @@
 class Libro {
-  var isbn;
-  var nombre;
-  var titulo;
-  var editorial;
-  Libro({this.isbn, this.nombre, this.titulo, this.editorial});
-}
+  final String isbn;
+  final String nombre;
+  final String titulo;
+  final String editorial;
+  final String foto;
 
-List<Libro> listLibros = [
   Libro(
-      isbn: '978-0-000-01',
-      nombre: 'Cosmos',
-      titulo: 'La teoria del cosmos',
-      editorial: 'breaknews'),
-  Libro(
-      isbn: '978-0-000-02',
-      nombre: 'Matematicas',
-      titulo: 'Introduccion a la aritmetica',
-      editorial: 'breaknews'),
-  Libro(
-      isbn: '978-0-000-03',
-      nombre: 'Física',
-      titulo: 'Mecanica de fluidos',
-      editorial: 'breaknews'),
-];
+      {required this.isbn,
+      required this.nombre,
+      required this.titulo,
+      required this.editorial,
+      required this.foto,
+      });
+
+  factory Libro.desdeDoc(Map<String, dynamic> data) {
+    return Libro(
+      isbn: data['isbn'] ?? '',
+      nombre: data['nombre'] ?? '',
+      titulo: data['titulo'] ?? '',
+      editorial: data['editorial'] ?? '',
+      foto: data['foto'] ?? ''
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "isbn": isbn,
+        "nombre": nombre,
+        "titulo": titulo,
+        "editorial": editorial,
+        "foto": foto,
+      };
+}

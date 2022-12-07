@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:proyectbiblioteca/domain/modelos/libro.dart';
 import 'package:proyectbiblioteca/ui/contenido/widget.dart';
 
@@ -17,27 +17,28 @@ class _RegistrarLibroState extends State<RegistrarLibro> {
   TextEditingController controlnombre = TextEditingController();
   TextEditingController controltitulo = TextEditingController();
   TextEditingController controleditorial = TextEditingController();
-
+  TextEditingController controlfoto = TextEditingController();
   @override
   void initState() {
     controlnombre.text = widget.gestionLibro.nombre;
     controlisbn.text = widget.gestionLibro.isbn;
     controltitulo.text = widget.gestionLibro.titulo;
     controleditorial.text = widget.gestionLibro.editorial;
+
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Scaffold(
+      body: Column(
         children: [
           const SizedBox(
             width: 10,
           ),
           Textos(
-            controlartextos: controlnombre,
+            controlartextos: controlisbn,
             etiqueta: 'Isbn',
           ),
           Textos(
@@ -61,41 +62,10 @@ class _RegistrarLibroState extends State<RegistrarLibro> {
                   editorial: controleditorial.text,
                 ));
                 Navigator.pop(context, _addLibro);
-                if (_addLibro.isEmpty) {
-                  AlertDialog(
-                    title: const Text('Informacion'),
-                    content: const Text('Datos vacios, no guardado'),
-                    actions: <Widget>[
-                      RaisedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            'Ok',
-                            style: TextStyle(color: Colors.white),
-                          ))
-                    ],
-                  );
-                } else {
-                  AlertDialog(
-                    title: const Text('Informacion'),
-                    content: const Text('Datos guardados'),
-                    actions: <Widget>[
-                      RaisedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            'Ok',
-                            style: TextStyle(color: Colors.white),
-                          ))
-                    ],
-                  );
-                }
               },
               child: const Text('Guardar')),
         ],
       ),
     );
   }
-}
+}*/

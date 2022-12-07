@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:proyectbiblioteca/domain/modelos/libro.dart';
 import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
 
@@ -12,10 +12,10 @@ class ConsultarLibros extends StatefulWidget {
 class _ConsultarLibrosState extends State<ConsultarLibros> {
   @override
   Widget build(BuildContext context) {
-    final List<Libro> _libros = listLibros;
+    final List<Libro> libros = [listLibros];
     return Center(
       child: ListView.builder(
-          itemCount: _libros.length,
+          itemCount: libros.length,
           itemBuilder: (context, pos) {
             return ListTile(
               onLongPress: () {},
@@ -24,18 +24,18 @@ class _ConsultarLibrosState extends State<ConsultarLibros> {
                         context,
                         MaterialPageRoute(
                             builder: (_) =>
-                                RegistrarLibro(gestionLibro: _libros[pos])))
+                                RegistrarLibro(gestionLibro: libros[pos])))
                     .then((resultado) {
                   if (resultado != null) {
-                    _libros[pos] = resultado[0];
+                    libros[pos] = resultado[0];
                     setState(() {});
                   }
                 });
               },
-              title: Text(_libros[pos].isbn),
-              subtitle: Text(_libros[pos].titulo),
+              title: Text(libros[pos].isbn),
+              subtitle: Text(libros[pos].titulo),
             );
           }),
     );
   }
-}
+}*/

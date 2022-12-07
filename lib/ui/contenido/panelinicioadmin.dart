@@ -3,6 +3,8 @@ import 'package:proyectbiblioteca/domain/modelos/libro.dart';
 import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/gestionaradministrador.dart';
 import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/addlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
 import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
 
@@ -15,8 +17,6 @@ class PanelInicio extends StatefulWidget {
 
 class _PanelInicioState extends State<PanelInicio>
     with SingleTickerProviderStateMixin {
-  final List<Libro>? libros = listLibros;
-  Libro? libro;
   int seleccionarPagina = 0;
   TabController? _controller;
 
@@ -33,6 +33,7 @@ class _PanelInicioState extends State<PanelInicio>
     _controller!.dispose();
   }
 
+  final List<Libro> libros = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,14 +78,12 @@ class _PanelInicioState extends State<PanelInicio>
           Expanded(
               child: TabBarView(
             controller: _controller,
-            children: [
-              RegistrarLibro(
-                gestionLibro: Libro(),
-              ),
-              const Deseo(),
-              const ConsultarLibros(),
-              const LibrosPrestados(),
-              const GestionarAdministrador()
+            children: const [
+              AgregarLibro(),
+              Deseo(),
+              ListarLibro(),
+              LibrosPrestados(),
+              GestionarAdministrador()
             ],
           ))
         ],

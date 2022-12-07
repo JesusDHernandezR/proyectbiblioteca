@@ -4,6 +4,7 @@ import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
 import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/inicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
 
 class PanelInicioEstudiante extends StatefulWidget {
@@ -65,7 +66,7 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => const ConsultarLibros())));
+                              builder: ((context) => const ListarLibro())));
                     },
                     child: const Text('Libros'),
                   ),
