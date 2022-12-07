@@ -23,31 +23,26 @@ class ListarLibro extends StatelessWidget {
                       padding: const EdgeInsets.all(5),
                       width: 50,
                       height: 50,
-                      child: controladorLibro.getLibrosGral![posicion].foto !=''
-                          ? Image.network(controladorLibro
-                              .getLibrosGral![posicion].foto)
+                      child: controladorLibro.getLibrosGral![posicion].foto !=
+                              ''
+                          ? Image.network(
+                              controladorLibro.getLibrosGral![posicion].foto)
                           : const Icon(Icons.photo),
                     ),
-                    title: Text(controladorLibro
-                        .getLibrosGral![posicion].nombre),
-                    subtitle: Text(
-                        controladorLibro.getLibrosGral![posicion].titulo),
+                    title:
+                        Text(controladorLibro.getLibrosGral![posicion].nombre),
+                    subtitle:
+                        Text(controladorLibro.getLibrosGral![posicion].titulo),
                     trailing: Container(
                       width: 80,
                       height: 40,
                       color: Colors.yellow,
-                      child: Text(controladorLibro
-                          .getLibrosGral![posicion].editorial),
+                      child: Text(
+                          controladorLibro.getLibrosGral![posicion].editorial),
                     ),
                   );
                 })
             : const Icon(Icons.abc),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed('/agregarlibro');
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

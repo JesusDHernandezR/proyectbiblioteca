@@ -32,20 +32,20 @@ class PeticionLibro {
     return url.toString();
   }
 
-  // static Future<void> actualizarLibro(
-  //     String id, Map<String, dynamic> catalogo) async {
-  //   await _db.collection('Libros').doc(id).update(catalogo).catchError((e) {
-  //     log(e);
-  //   });
-  //   //return true;
-  // }
+  static Future<void> actualizarLibro(
+      String id, Map<String, dynamic> catalogo) async {
+    await _db.collection('Libros').doc(id).update(catalogo).catchError((e) {
+      log(e);
+    });
+    //return true;
+  }
 
-  // static Future<void> eliminarcatalogo(String id) async {
-  //   await _db.collection('Libros').doc(id).delete().catchError((e) {
-  //     log(e);
-  //   });
-  //   //return true;
-  // }
+  static Future<void> eliminarcatalogo(String id) async {
+    await _db.collection('Libros').doc(id).delete().catchError((e) {
+      log(e);
+    });
+    //return true;
+  }
 
   static Future<List<Libro>> consultarGral() async {
     List<Libro> lista = [];

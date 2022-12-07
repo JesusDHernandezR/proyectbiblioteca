@@ -81,7 +81,7 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => const LibrosPrestados())));
+                              builder: ((context) => const ListarLibro())));
                     },
                     child: const Text('Prestados'),
                   ),
