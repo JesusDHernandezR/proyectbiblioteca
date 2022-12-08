@@ -20,7 +20,7 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
     ControlAuthFirebase control = Get.find();
     return MaterialApp(
       title: 'Estudiante',
-      home: Scaffold(
+      home: Scaffold(        
         drawer: Drawer(
           //Listadelibros, listalibrosprestados y listadelibrosdeseo
           child: Container(
@@ -40,23 +40,6 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
                       fontWeight: FontWeight.bold, height: 2, fontSize: 15),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 30),
-                  padding: const EdgeInsets.all(20),
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: ElevatedButton(
-                    style: ButtonStyle(),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const PanelInicioEstudiante())));
-                    },
-                    child: const Text('Inicio'),
-                  ),
-                ),
-                Container(
                   margin: const EdgeInsets.only(top: 1),
                   padding: const EdgeInsets.all(20),
                   width: double.infinity,
@@ -69,21 +52,6 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
                               builder: ((context) => const ListarLibro())));
                     },
                     child: const Text('Libros'),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 1),
-                  padding: const EdgeInsets.all(20),
-                  width: double.infinity,
-                  color: Colors.transparent,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) => const ListarLibro())));
-                    },
-                    child: const Text('Prestados'),
                   ),
                 ),
                 Container(
@@ -133,7 +101,7 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
           ],
         ),
         body: const Center(
-          child: Text(''),
+          child: Text('Bienvenido'),
         ),
       ),
       // appBar: AppBar(

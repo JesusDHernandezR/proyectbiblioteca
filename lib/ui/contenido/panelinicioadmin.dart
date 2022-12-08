@@ -5,6 +5,7 @@ import 'package:proyectbiblioteca/ui/contenido/gestionaradministrador.dart';
 import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/addlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibrodeseo.dart';
 import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
 import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
 
@@ -61,10 +62,10 @@ class _PanelInicioState extends State<PanelInicio>
                       child: Text('Registrar libro'),
                     ),
                     Tab(
-                      child: Text('Lista deseo'),
+                      child: Text('Solicitados'),
                     ),
                     Tab(
-                      child: Text('Libros'),
+                      child: Text('Stock Libros'),
                     ),
                     Tab(
                       child: Text('Libros prestados'),
@@ -80,7 +81,7 @@ class _PanelInicioState extends State<PanelInicio>
             controller: _controller,
             children: const [
               AgregarLibro(),
-              Deseo(),
+              ListarLibroDeseo(),
               ListarLibro(),
               LibrosPrestados(),
               GestionarAdministrador()

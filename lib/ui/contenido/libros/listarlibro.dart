@@ -11,6 +11,9 @@ class ListarLibro extends StatelessWidget {
     ConsultasController controladorLibro = Get.find();
     controladorLibro.consultaLibros().then((value) => null);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(''),
+      ),
       body: Obx(
         () => controladorLibro.getLibrosGral?.isEmpty == false
             ? ListView.builder(

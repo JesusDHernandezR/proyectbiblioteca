@@ -6,6 +6,7 @@ import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/inicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/addlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibrodeseo.dart';
 import 'package:proyectbiblioteca/ui/contenido/login.dart';
 import 'package:proyectbiblioteca/ui/contenido/loginestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
@@ -33,6 +34,7 @@ class App extends StatelessWidget {
         //'/consultarLibros' : (context) => const ConsultarLibros(),
         '/agregarlibro': (context) => const AgregarLibro(),
         '/listarlibro' : (context) => const ListarLibro(),
+        '/listarlibroDeseo' : (context) => const ListarLibroDeseo(),
       },
       home: const Inicio(),
     );

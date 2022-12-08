@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_storage/firebase_storage.dart' as fs;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyectbiblioteca/domain/modelos/libro.dart';
+import 'package:proyectbiblioteca/domain/modelos/librodeseo.dart';
 
 class PeticionLibro {
   static final fs.FirebaseStorage storage = fs.FirebaseStorage.instance;
@@ -17,6 +18,10 @@ class PeticionLibro {
     catalogo['foto'] = url.toString();
 
     await _db.collection('Libros').doc().set(catalogo).catchError((e) {});
+    //return true;
+  }
+  static Future<void> crearLibroDeseado(Map<String, dynamic> catalogo) async {
+    await _db.collection('LibrosDeseados').doc().set(catalogo).catchError((e) {});
     //return true;
   }
 
@@ -59,5 +64,19 @@ class PeticionLibro {
     });
 
     return lista;
+  }
+
+  static Future<List<LibroDeseo>> consultarGralDeseados() async {
+    List<LibroDeseo> listadeseo = [];
+    await _db.collection("LibrosDeseados").get().then((respuesta) {
+      for (var doc in respuesta.docs) {
+        log(doc.data().toString());
+        listadeseo.add(LibroDeseo.desdeDoc(doc.data()));
+      }
+
+
+    });
+
+    return listadeseo;
   }
 }
