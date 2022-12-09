@@ -45,37 +45,38 @@ class _LoginState extends State<Login> {
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
               Textos(
                   controlartextos: controlContrasena, etiqueta: 'Contraseña'),
-              IconButton(
-                  onPressed: () {
-                    controlAdmin.update();
-                    controlAdmin
-                        .ingresarCorreo(
-                            controlCorreo.text, controlContrasena.text)
-                        .then((value) {
-                      if (controlCorreo.text == '' &&
-                          controlContrasena.text == '' &&
-                          controlAdmin.emailf != controlCorreo.text &&
-                          controlAdmin.uid != controlContrasena.text) {
-                        showDialog(
-                            context: context,
-                            builder: (context) => const Login());
+              ElevatedButton(
+                onPressed: () {
+                  controlAdmin.update();
+                  controlAdmin
+                      .ingresarCorreo(
+                          controlCorreo.text, controlContrasena.text)
+                      .then((value) {
+                    if (controlCorreo.text == '' &&
+                        controlContrasena.text == '' &&
+                        controlAdmin.emailf != controlCorreo.text &&
+                        controlAdmin.uid != controlContrasena.text) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => const Login());
+                    } else {
+                      if (controlAdmin.emailf != 'Sin Registro' &&
+                          controlAdmin.uid != '') {
+                        Get.offAllNamed('/panelAdministrador');
                       } else {
-                        if (controlAdmin.emailf != 'Sin Registro' &&
-                            controlAdmin.uid != '') {
-                          Get.offAllNamed('/panelAdministrador');
-                        } else {
-                          Get.showSnackbar(const GetSnackBar(
-                            title: 'Validacion de Usuarios',
-                            message: 'Error desde logica',
-                            icon: Icon(Icons.warning),
-                            duration: Duration(seconds: 5),
-                            backgroundColor: Colors.red,
-                          ));
-                        }
+                        Get.showSnackbar(const GetSnackBar(
+                          title: 'Validacion de Usuarios',
+                          message: 'Error desde logica',
+                          icon: Icon(Icons.warning),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.red,
+                        ));
                       }
-                    });
-                  },
-                  icon: const Icon(Icons.login)),
+                    }
+                  });
+                },
+                child: const Text('Ingresar'),
+              ),
               // ElevatedButton(
               //     onPressed: () {
               //       Navigator.push(

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proyectbiblioteca/domain/modelos/libro.dart';
-import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/gestionaradministrador.dart';
-import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
-import 'package:proyectbiblioteca/ui/contenido/libros/addlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibrodeseo.dart';
-import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
-import 'package:proyectbiblioteca/ui/contenido/registrarlibro.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibroprestado.dart';
 
 class PanelInicio extends StatefulWidget {
   const PanelInicio({super.key});
@@ -25,7 +22,7 @@ class _PanelInicioState extends State<PanelInicio>
   void initState() {
     super.initState();
     _controller =
-        TabController(length: 5, initialIndex: seleccionarPagina, vsync: this);
+        TabController(length: 4, initialIndex: seleccionarPagina, vsync: this);
   }
 
   @override
@@ -41,6 +38,13 @@ class _PanelInicioState extends State<PanelInicio>
       appBar: AppBar(
         title: const Text('Inicio'),
         backgroundColor: const Color.fromARGB(255, 213, 172, 111),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.offAllNamed('/login');
+              },
+              icon: const Icon(Icons.exit_to_app_outlined))
+        ],
       ),
       body: Column(
         children: [
@@ -58,9 +62,6 @@ class _PanelInicioState extends State<PanelInicio>
                   labelColor: Colors.black,
                   unselectedLabelColor: Colors.grey,
                   tabs: const [
-                    Tab(
-                      child: Text('Registrar libro'),
-                    ),
                     Tab(
                       child: Text('Solicitados'),
                     ),
@@ -80,10 +81,9 @@ class _PanelInicioState extends State<PanelInicio>
               child: TabBarView(
             controller: _controller,
             children: const [
-              AgregarLibro(),
               ListarLibroDeseo(),
               ListarLibro(),
-              LibrosPrestados(),
+              ListarLibroPrestado(),
               GestionarAdministrador()
             ],
           ))

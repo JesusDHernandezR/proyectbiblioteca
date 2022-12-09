@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proyectbiblioteca/data/service/peticionesfirebase.dart';
 
 import '../../../domain/controller/controlfirebase.dart';
 
@@ -30,6 +31,49 @@ class ListarLibroDeseo extends StatelessWidget {
                       child: Text(
                           "Celular: ${controladorLibro.getLibrosGraldeseo![posicion].numeroCelular}"),
                     ),
+                    onLongPress: () {
+                      showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                                title: const Text('Solicitud'),
+                                content: Text(
+                                    'Siempre desea aceptar la solicitud de: ${controladorLibro.getLibrosGraldeseo![posicion].identificacion}'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        var catalogo = <String, dynamic>{
+                                          'idPersona': controladorLibro
+                                              .getLibrosGraldeseo![posicion]
+                                              .identificacion,
+                                          'celular': controladorLibro
+                                              .getLibrosGraldeseo![posicion]
+                                              .numeroCelular,
+                                          'nombrelibro': controladorLibro
+                                              .getLibrosGraldeseo![posicion]
+                                              .nombreLibro,
+                                          'comentario': controladorLibro
+                                              .getLibrosGraldeseo![posicion]
+                                              .comentario,
+                                        };
+                                        PeticionLibro.crearLibroPrestado(
+                                            catalogo);
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text(
+                                        'Aceptar',
+                                        style: TextStyle(color: Colors.red),
+                                      )),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text(
+                                        'Rechazar',
+                                        style: TextStyle(color: Colors.blue),
+                                      ))
+                                ],
+                              ));
+                    },
                   );
                 })
             : const Icon(Icons.abc),

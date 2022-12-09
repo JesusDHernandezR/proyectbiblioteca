@@ -39,9 +39,9 @@ class _LoginFState extends State<LoginF> {
           ),
           Textos(
             controlartextos: controlcontrasena,
-            etiqueta: 'Contraseña',            
+            etiqueta: 'Contraseña',
           ),
-          IconButton(
+          ElevatedButton(
             onPressed: () {
               controlUsuario.update();
               controlUsuario
@@ -62,7 +62,7 @@ class _LoginFState extends State<LoginF> {
                 }
               });
             },
-            icon: const Icon(Icons.save, size: 40),
+            child: const Text('Guardar'),
           ),
           // ElevatedButton(
           //   //Boton de Enviar Datos

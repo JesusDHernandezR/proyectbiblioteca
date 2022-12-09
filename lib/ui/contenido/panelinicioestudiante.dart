@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyectbiblioteca/domain/controller/controlusuariof.dart';
-import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
-import 'package:proyectbiblioteca/ui/contenido/inicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/librodeseo.dart';
-import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
-import 'package:proyectbiblioteca/ui/contenido/librosprestados.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibroestudiante.dart';
 
 class PanelInicioEstudiante extends StatefulWidget {
   const PanelInicioEstudiante({super.key});
@@ -20,7 +17,7 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
     ControlAuthFirebase control = Get.find();
     return MaterialApp(
       title: 'Estudiante',
-      home: Scaffold(        
+      home: Scaffold(
         drawer: Drawer(
           //Listadelibros, listalibrosprestados y listadelibrosdeseo
           child: Container(
@@ -49,7 +46,8 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => const ListarLibro())));
+                              builder: ((context) =>
+                                  const ListarLibroEstudiante())));
                     },
                     child: const Text('Libros'),
                   ),
@@ -91,17 +89,19 @@ class _PanelInicioEstudiante extends State<PanelInicioEstudiante> {
           actions: [
             IconButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Inicio(),
-                      ));
+                  Get.offAllNamed('/loginEstudiante');
                 },
                 icon: const Icon(Icons.exit_to_app_outlined))
           ],
         ),
-        body: const Center(
-          child: Text('Bienvenido'),
+        body: Center(
+          child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://c7.alamy.com/compes/2e5eg9y/diseno-de-estanterias-de-colores-para-libreria-ereader-biblioteca-simbolo-de-la-aplicacion-o-casa-decoracion-cartel-imprimir-abstracto-vector-ilustracion-2e5eg9y.jpg'),
+                    fit: BoxFit.cover)),
+          ),
         ),
       ),
       // appBar: AppBar(

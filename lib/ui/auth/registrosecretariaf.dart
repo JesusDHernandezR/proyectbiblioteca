@@ -39,7 +39,7 @@ class _RegistroSecretariafState extends State<RegistroSecretariaf> {
             controlartextos: controlcontrasena,
             etiqueta: 'Contraseña',
           ),
-          IconButton(
+          ElevatedButton(
             onPressed: () {
               controlSecretaria.update();
               controlSecretaria
@@ -59,7 +59,7 @@ class _RegistroSecretariafState extends State<RegistroSecretariaf> {
                 }
               });
             },
-            icon: const Icon(Icons.save, size: 40),
+            child: const Text('Guardar'),
           ),
         ],
       ),

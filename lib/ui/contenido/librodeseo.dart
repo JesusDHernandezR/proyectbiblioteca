@@ -59,7 +59,7 @@ class _DeseoState extends State<Deseo> {
                   PeticionLibro.crearLibroDeseado(catalogo);
                   Get.offAllNamed('/panelEstudiante');
                 },
-                child: const Text("Guardar libro"))
+                child: const Text("Enviar solicitud"))
           ],
         ),
       ),

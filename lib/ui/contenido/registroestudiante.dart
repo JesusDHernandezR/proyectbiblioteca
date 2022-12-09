@@ -71,7 +71,7 @@ class _AdicionarEstudianteState extends State<RegistroEstudiante> {
                 Navigator.pop(context, _clienteAdd);
               }
             },
-            child: const Text('Guardar Datos'),
+            child: const Text('Guardar'),
           ),
         ],
       ),

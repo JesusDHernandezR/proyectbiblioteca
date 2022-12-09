@@ -33,6 +33,9 @@ class _AgregarLibroState extends State<AgregarLibro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Adicionar libro'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
@@ -101,7 +104,7 @@ class _AgregarLibroState extends State<AgregarLibro> {
                   PeticionLibro.crearLibro(catalogo, _image);
                   Get.offAllNamed('/panelAdministrador');
                 },
-                child: const Text("Guardar libro"))
+                child: const Text("Guardar libro")),
           ],
         ),
       ),

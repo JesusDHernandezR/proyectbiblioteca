@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyectbiblioteca/domain/modelos/libro.dart';
 import 'package:proyectbiblioteca/ui/auth/loginf.dart';
+import 'package:proyectbiblioteca/ui/contenido/actualizarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/consultarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/inicio.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/addlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibro.dart';
 import 'package:proyectbiblioteca/ui/contenido/libros/listarlibrodeseo.dart';
+import 'package:proyectbiblioteca/ui/contenido/libros/listarlibroestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/login.dart';
 import 'package:proyectbiblioteca/ui/contenido/loginestudiante.dart';
 import 'package:proyectbiblioteca/ui/contenido/panelinicioadmin.dart';
@@ -15,8 +17,8 @@ import 'package:proyectbiblioteca/ui/contenido/registroadmin.dart';
 import 'package:proyectbiblioteca/ui/contenido/registroestudiante.dart';
 
 class App extends StatelessWidget {
-   const App({Key? key}) : super(key: key);
-  
+  const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -33,8 +35,11 @@ class App extends StatelessWidget {
         '/registrarEstudiante': (context) => const RegistroEstudiante(),
         //'/consultarLibros' : (context) => const ConsultarLibros(),
         '/agregarlibro': (context) => const AgregarLibro(),
-        '/listarlibro' : (context) => const ListarLibro(),
-        '/listarlibroDeseo' : (context) => const ListarLibroDeseo(),
+        '/listarlibro': (context) => const ListarLibro(),
+        '/listarlibroDeseo': (context) => const ListarLibroDeseo(),
+        '/listarlibroEstudiante': (context) => const ListarLibroEstudiante(),
+        '/eliminarLibro': (context) => const ListarLibroEstudiante(),
+        '/actualizarLibro': (context) => const ActualizarLibro(),
       },
       home: const Inicio(),
     );

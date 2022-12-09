@@ -44,39 +44,40 @@ class _LoginEstudianteState extends State<LoginEstudiante> {
                   )),
               Textos(controlartextos: controlCorreo, etiqueta: 'Correo'),
               Textos(
-                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),                  
+                  controlartextos: controlContrasena, etiqueta: 'Contraseña'),
 
-              IconButton(
-                  onPressed: () {
-                    controlE.update();
-                    controlE
-                        .ingresarCorreo(
-                            controlCorreo.text, controlContrasena.text)
-                        .then((value) {
-                      if (controlCorreo.text == '' &&
-                          controlContrasena.text == '' &&
-                          controlE.emailf != controlCorreo.text &&
-                          controlE.uid != controlContrasena.text) {
-                        showDialog(
-                            context: context,
-                            builder: (context) => const LoginEstudiante());
+              ElevatedButton(
+                onPressed: () {
+                  controlE.update();
+                  controlE
+                      .ingresarCorreo(
+                          controlCorreo.text, controlContrasena.text)
+                      .then((value) {
+                    if (controlCorreo.text == '' &&
+                        controlContrasena.text == '' &&
+                        controlE.emailf != controlCorreo.text &&
+                        controlE.uid != controlContrasena.text) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => const LoginEstudiante());
+                    } else {
+                      if (controlE.emailf != 'Sin Registro' &&
+                          controlE.uid != '') {
+                        Get.offAllNamed('/panelEstudiante');
                       } else {
-                        if (controlE.emailf != 'Sin Registro' &&
-                            controlE.uid != '') {
-                          Get.offAllNamed('/panelEstudiante');
-                        } else {
-                          Get.showSnackbar(const GetSnackBar(
-                            title: 'Validacion de Usuarios',
-                            message: 'Error desde logica',
-                            icon: Icon(Icons.warning),
-                            duration: Duration(seconds: 5),
-                            backgroundColor: Colors.red,
-                          ));
-                        }
+                        Get.showSnackbar(const GetSnackBar(
+                          title: 'Validacion de Usuarios',
+                          message: 'Error desde logica',
+                          icon: Icon(Icons.warning),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.red,
+                        ));
                       }
-                    });
-                  },
-                  icon: const Icon(Icons.login)),
+                    }
+                  });
+                },
+                child: const Text('Ingresar'),
+              ),
               // ElevatedButton(
               //     onPressed: () {
 
